@@ -15,7 +15,7 @@ public class Classroom {
     private String description;
 
     @OneToMany(mappedBy = "classroom", cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER)
+            fetch = FetchType.LAZY)
     public Set<Student> students;
 
     public long getClassid() {

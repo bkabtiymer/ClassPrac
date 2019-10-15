@@ -1,10 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 
+<div th:replace="base :: navlinks"></div>
+
+<h1> Student List</h1>
+<div class="container">
+    <div class="row">
+        <table class="table">
+
+            <div class="col">
+
+            </div>
+            <div class="col">
+
+                <tr>
+                    <th>Student Name</th>
+                    <th>Student ID</th>
+                    <th>Major</th>
+                    <th>Classroom Name</th>
+                </tr>
+            </div>
+
+            <tr th:each="student : ${students}">
+                <td th:text="${student.name}"></td>
+                <td th:text="${student.studentID}"></td>
+                <td th:text="${student.major}"></td>
+                <td th:text="${student.classroom.classname}"></td>
+
+                <td>
+
+                    <a th:href="@{/updateemployee/{id}(id=${student.id})}">Update</a>
+                    <a th:href="@{/detailemployee/{id}(id=${student.id})}">Details</a>
+                    <a th:href="@{/deleteemployee/{id}(id=${student.id})}">Delete</a>
+
+                </td>
+            </tr>
+            <div class="col">
+
+            </div>
+
+
+
+        </table>
+    </div>
+</div>
+
+<div th:replace="base :: footer"></div>
 </body>
 </html>

@@ -6,16 +6,17 @@ import java.util.Set;
 @Entity
 public class Student {
     @Id
-    private long id;
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
-    private Classroom classroom;
     private String name;
     private String studentID;
     private String major;
-    @ManyToOne(fetch= FetchType.LAZY)
+    @ManyToOne(fetch= FetchType.EAGER)
     @JoinColumn(name = "classid")
 //    private Class class;
+    private Classroom classroom;
+
 
     public long getId() {
         return id;
@@ -49,7 +50,11 @@ public class Student {
         this.major = major;
     }
 
+    public Classroom getClassroom() {
+        return classroom;
+    }
 
-
-
+    public void setClassroom(Classroom classroom) {
+        this.classroom = classroom;
+    }
 }
